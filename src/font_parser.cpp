@@ -9,6 +9,19 @@
 #include <stdio.h>
 #include "Font_Parser.h"
 
+void build_ascii_table(int char_id, std::vector<std::string> &ascii_chars){
+    char ch = (char) char_id;
+    std::string str_repr_of_char(1, ch);
+    ascii_chars.push_back(str_repr_of_char);
+};
+
+void print_ascii_chars(std::vector<std::string> &ascii_chars){
+    std::cout << "This is the list of available characters: \n";
+    for (auto s: ascii_chars)
+        std::cout << s << ", ";
+    std::cout << std::endl;    
+};
+
 
 Font_Parser::Font_Parser(std::string filepath){
     load_font_file(filepath);
@@ -25,7 +38,7 @@ int Font_Parser::get_line_data(std::string input, std::string pattern) {
 void Font_Parser::load_font_file(std::string filepath){
     /*
     this does no clever introspection of the xml pointed at. it expects to
-    find infoabout "count" (=n) on line 6 and then using that value it loops from
+    find info about "count" (n) on line 6 and then using that value it loops from
     the current line trough the next (n) lines, and regexes them to get the glyph elements
 
     this is not intended to be a generic font loader, but it was an interesting regex
@@ -52,17 +65,12 @@ void Font_Parser::load_font_file(std::string filepath){
         Glyph glyph_char = {gp[0], gp[1], gp[2], gp[3], gp[4], gp[5], gp[6], gp[7], gp[8], gp[9]};
         glyph_remap[glyph_char.id] = i;
         glyphlist.push_back(glyph_char);
-        char ch = (char) glyph_char.id;
-        std::string str_repr_of_char(1, ch);
-        ascii_chars.push_back(str_repr_of_char);
+        build_ascii_table(glyph_char.id, ascii_chars);
     }
 
     file.close();
+    print_ascii_chars(ascii_chars);
 
-    std::cout << "This is the list of available characters: \n";
-    for (auto s: ascii_chars)
-        std::cout << s << ", ";
-    std::cout << std::endl;
 };
 
 Glyph Font_Parser::get_glyph_info(int character_index){
