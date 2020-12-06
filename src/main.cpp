@@ -6,6 +6,7 @@
 
 #include "Font_Parser.h"
 #include "window.h"
+#include "Glyph_Sheet.h"
 
 
 void pollEvents(Window &window){
@@ -18,12 +19,13 @@ void pollEvents(Window &window){
 
 int main(int argc, char* args[])
 {
-
     Font_Parser font("res/consolas.fnt");
-    Window window( "SDL Tutorial", 800, 600);
+    Window window("bitmap font demo", 800, 600);
+    Glyph_Sheet GS("res/consolas_0.png");
 
     while (!window.isClosed()){
         pollEvents(window);
+        GS.display();
         window.clear();
     }
     return 0;

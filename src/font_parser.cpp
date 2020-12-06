@@ -22,10 +22,11 @@ void print_ascii_chars(std::vector<std::string> &ascii_chars){
     std::cout << std::endl;    
 };
 
-
 Font_Parser::Font_Parser(std::string filepath){
+    std::cout << "HERE" << std::endl;
     load_font_file(filepath);
-}
+    std::cout << "HERE 2" << std::endl;
+};
 
 int Font_Parser::get_line_data(std::string input, std::string pattern) {
     int rval = 0;

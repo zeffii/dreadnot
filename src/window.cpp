@@ -22,13 +22,11 @@ Window::~Window(){
 
 bool Window::init(){
     if (SDL_Init(SDL_INIT_VIDEO) != 0){
-        cerr << "Failed to init SDL.\n";
-        return false;
+        cerr << "Failed to init SDL.\n"; return false;
     }
 
     if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG){
-        cerr << "Failed to init SDL img\n";
-        return false;
+        cerr << "Failed to init SDL img\n"; return false;
     }
 
     _window = SDL_CreateWindow(
@@ -40,15 +38,13 @@ bool Window::init(){
     );
 
     if (_window == nullptr) {
-        cerr << "Failed to create window! :/ \n";
-        return false;
+        cerr << "Failed to create window! :/ \n"; return false;
     }
 
     renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_PRESENTVSYNC);
 
     if (renderer == nullptr) {
-        cerr << "Failed to create renderer!\n";
-        return false;
+        cerr << "Failed to create renderer!\n"; return false;
     }
 
     return true;

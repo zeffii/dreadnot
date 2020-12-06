@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"pri",
+				"print_ascii_chars"
+			],
+			[
+				"as",
+				"ascii_chars"
+			],
+			[
 				"asc",
 				"ascii_int"
 			],
@@ -112,7 +120,7 @@
 		"cols":
 		[
 			0.0,
-			0.439540816782,
+			0.463681820272,
 			1.0
 		],
 		"rows":
@@ -124,7 +132,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 207.0
+		"height": 83.0
 	},
 	"output.find_results":
 	{
@@ -170,7 +178,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 230.0,
+	"side_bar_width": 157.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
